@@ -3,48 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tchivert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 17:23:28 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/09 12:46:15 by rcabezas         ###   ########.fr       */
+/*   Created: 2019/09/04 05:08:38 by tchivert          #+#    #+#             */
+/*   Updated: 2019/09/10 05:45:11 by tchivert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_read(t_struct *ps, char *format, va_list ap)
+static void	ft_read(t_env *env, char *format, va_list ap)
 {
-	while (format[ps->i])
+	while (format[env->i])
 	{
-		if (format[ps->i] == '%')
+		if (format[env->i] == '%')
 		{
-			ps->i++;
-			if (ft_parse(ps, format))
-				ft_compute(ps, ap);
-			ft_reinit(ps);
+			env->i++;
+			if (ft_parse(env, format))
+				ft_compute(env, ap);
+			ft_reinit(env);
 		}
 		else
 		{
-			ft_putchar(format[ps->i]);
-			ps->i++;
-			ps->ret++;
+			ft_putchar(format[env->i]);
+			env->i++;
+			env->ret++;
 		}
 	}
 }
 
-int 	ft_printf(const char *format, ...) 
+int			ft_printf(char *format, ...)
 {
-	va_list		ap;
-	t_struct	*ps;
-	size_t		ret;
+	t_env	*env;
+	size_t	ret;
+	va_list	ap;
 
 	if (!format)
 		return (-1);
-	if (!(ps = malloc(sizeof(t_struct))) || !(ft_init(ps)))
+	if (!(env = malloc(sizeof(t_env))) || !(ft_init(env)))
 		return (-1);
 	va_start(ap, format);
-	ft_read(ps, format, ap);
-	ret = ps->ret;
-	free(ps);
-	return(ret);
+	ft_read(env, format, ap);
+	ret = env->ret;
+	free(env);
+	return (ret);
 }
