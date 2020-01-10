@@ -66,7 +66,7 @@ static void	ft_parsespecs(t_struct *ps, char *format)
 	if (ft_isdigit(format[ps->i]) && format[ps->i] != '0')
 		ft_parsewidth(ps, format);
 	if (format[ps->i] == '.')
-		ft_parseprec(ps, format);
+		ft_parseprecision(ps, format);
 	if (format[ps->i] == 'h' || format[ps->i] == 'l' || format[ps->i] == 'L')
 		ft_parsemodifiers(ps, format);
 }
@@ -82,7 +82,7 @@ int			ft_parse(t_struct *ps, char *format)
 		ft_parsespecs(ps, format);
 	if (ps->precision == 0 && ps->dot == 1)
 		ps->precision = -1;
-	if (ft_charchr("diouxXscpbf%", format[ps->i]))
+	if (ft_charchr("cspdiuxX%", format[ps->i]))
 		ps->conversion = format[ps->i++];
 	return (1);
 }
