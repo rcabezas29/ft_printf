@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/01/15 16:40:51 by rcabezas          #+#    #+#              #
+#    Updated: 2020/01/15 16:40:58 by rcabezas         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 
 FILESPRINTF = ft_printf.c \
@@ -22,10 +34,9 @@ FILESLIBFT = ft_atoi.c \
 	  ft_isalpha.c \
 	  ft_isascii.c \
 	  ft_isdigit.c \
-	  ft_islower.c \
 	  ft_isprint.c \
-	  ft_isupper.c \
 	  ft_itoa.c \
+	  ft_isupper.c \
 	  ft_lstadd_back_bonus.c \
 	  ft_lstadd_front_bonus.c \
 	  ft_lstclear_bonus.c \
@@ -42,6 +53,7 @@ FILESLIBFT = ft_atoi.c \
 	  ft_memmove.c \
 	  ft_memset.c \
 	  ft_putchar.c \
+	  ft_putstr.c \
 	  ft_putchar_fd.c \
 	  ft_putendl_fd.c \
 	  ft_putnbr_fd.c \
@@ -52,7 +64,7 @@ FILESLIBFT = ft_atoi.c \
 	  ft_strjoin.c \
 	  ft_strlcat.c \
 	  ft_strlcpy.c \
-	  ft_strlen.c
+	  ft_strlen.c \
 	  ft_strmapi.c \
 	  ft_strncmp.c \
 	  ft_strnstr.c \
@@ -68,8 +80,8 @@ CFLAGS = -Werror -Wall -Wextra
 
 OBJ = $(FILESPRINTF:.c=.o) $(FILESLIBFT:.c=.o)
 
-$(NAME): $(OBJ) ../includes/ft_printf.h ../srcs/libft.h
-	@gcc $(CFLAGS) $(SRC)
+$(NAME): $(OBJ) ft_printf.h libft.h
+	@gcc $(CFLAGS) $(FILESLIBFT) $(FILESPRINTF) testmain.c
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
