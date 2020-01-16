@@ -95,8 +95,6 @@ void		ft_printuns(t_struct *ps, unsigned long long arg)
 		ft_printhex(ps, arg);
 	if (ps->conversion == 'o')
 		ft_printoct(ps, arg);
-	if (ps->conversion == 'b')
-		ft_printbin(ps, arg);
 	if (ps->conversion == 'u')
 	{
 		if (ps->width)

@@ -48,7 +48,6 @@ void			ft_putnbr_base(long long int nb, char *base);
 
 void			ft_printchar(t_struct *ps, char arg);
 void			ft_printstr(t_struct *ps, char *arg);
-void			ft_printbin(t_struct *ps, unsigned long long arg);
 void			ft_printsgn_neg(t_struct *ps, long long int arg);
 void			ft_printsgn(t_struct *ps, long long int arg);
 void			ft_printpercent(t_struct *ps);
