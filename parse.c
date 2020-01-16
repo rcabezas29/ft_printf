@@ -67,7 +67,7 @@ static void	ft_parsespecs(t_struct *ps, const char *format)
 		ft_parsewidth(ps, format);
 	if (format[ps->i] == '.')
 		ft_parseprecision(ps, format);
-	if (format[ps->i] == 'h' || format[ps->i] == 'l' || format[ps->i] == 'L')
+	if (format[ps->i] == 'h' || format[ps->i] == 'l' || format[ps->i] == 'L' || format[ps->i] == 'H')
 		ft_parsemodifiers(ps, format);
 }
 
