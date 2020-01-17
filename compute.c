@@ -55,8 +55,7 @@ void		ft_compute(t_struct *ps, va_list ap)
 {
 	if (ps->conversion == 'd' || ps->conversion == 'i')
 		ft_castsgn(ps, ap);
-	else if (ps->conversion == 'p' || ps->conversion == 'u' ||
-			ps->conversion == 'x' || ps->conversion == 'X')
+	else if (ps->conversion == 'u' || ps->conversion == 'x' || ps->conversion == 'X')
 		ft_castuns(ps, ap);
 	else if (ps->conversion == 's')
 		ft_printstr(ps, va_arg(ap, char *));

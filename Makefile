@@ -23,7 +23,6 @@ FILESPRINTF = ft_printf.c \
 		   printptr.c \
 		   printuns.c \
 		   printpercent.c \
-		   printbinary.c \
 		   nbrutils.c \
 		   utils.c
 
