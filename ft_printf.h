@@ -15,12 +15,11 @@
 
 # include <stdarg.h>
 # include <stdlib.h>
-# include <limits.h>
 # include "libft.h"
 
 typedef struct	s_struct
 {
-	char		flags[5];
+	char		flags[6];
 	size_t		width;
 	int			precision;
 	int			dot;

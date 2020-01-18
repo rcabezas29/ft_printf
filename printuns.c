@@ -103,7 +103,7 @@ void		ft_printuns(t_struct *ps, unsigned long long arg)
 			ft_putprec(ps, ft_nbrlen(arg));
 		if (!(ps->precision == -1 && arg == 0))
 		{
-			if (arg == ULONG_MAX || (long long)arg < 0)
+			if (arg == 4294967295 || (long long)arg < 0)
 				ps->ret += 20;
 			else
 				ps->ret += ft_nbrlen(arg);

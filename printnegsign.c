@@ -14,7 +14,7 @@
 
 static void	ft_putlnbr(long long int n)
 {
-	if (n <= LONG_MIN)
+	if (n <= -2147483647)
 	{
 		ft_putstr("9223372036854775808");
 		return ;
@@ -71,7 +71,7 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 	size_t	arglen;
 
 	arglen = ft_nbrlen(arg);
-	if (arg <= LONG_MIN)
+	if (arg <= -2147483647)
 		ps->ret += 18;
 	if (ps->flags[1])
 		ft_putchar('-');
