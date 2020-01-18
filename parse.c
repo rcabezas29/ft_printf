@@ -39,6 +39,11 @@ static void	ft_parseflags(t_struct *ps, const char *format)
 		ps->flags[4] = 1;
 		ps->i++;
 	}
+	if (format[ps->i] == '*')
+	{
+		ps->flags[5] = 1;
+		ps->i++;
+	}
 }
 
 static void	ft_parsemodifiers(t_struct *ps, const char *format)
@@ -61,7 +66,7 @@ static void	ft_parsespecs(t_struct *ps, const char *format)
 {
 	if (format[ps->i] == '#' || format[ps->i] == '0' ||
 			format[ps->i] == '-' || format[ps->i] == '+' ||
-			format[ps->i] == ' ')
+			format[ps->i] == ' ' || format[ps->i] == '*')
 		ft_parseflags(ps, format);
 	if (ft_isdigit(format[ps->i]) && format[ps->i] != '0')
 		ft_parsewidth(ps, format);
@@ -77,8 +82,8 @@ int			ft_parse(t_struct *ps, const char *format)
 				format[ps->i] == '-' || format[ps->i] == '+' ||
 				format[ps->i] == ' ' || format[ps->i] == '.' ||
 				format[ps->i] == 'h' || format[ps->i] == 'l' ||
-				format[ps->i] == 'L' || ft_isdigit(format[ps->i])) &&
-				format[ps->i])
+				format[ps->i] == 'L' || ft_isdigit(format[ps->i] || 
+				format[ps->i] == '*')) && format[ps->i])
 		ft_parsespecs(ps, format);
 	if (ps->precision == 0 && ps->dot == 1)
 		ps->precision = -1;
