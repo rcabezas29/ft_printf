@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 void	ft_parseprecision(t_struct *ps, const char *format)
 {
@@ -27,6 +28,13 @@ void	ft_parseprecision(t_struct *ps, const char *format)
 
 void	ft_parsewidth(t_struct *ps, const char *format)
 {
-	ps->width = ft_atoi(format + ps->i);
-	ps->i += ft_nbrlen(ps->width);
+	if (ft_isdigit(format[ps->i]) && format[ps->i] != '0')
+	{
+		ps->width = ft_atoi(format + ps->i);
+		ps->i += ft_nbrlen(ps->width);
+	}
+	if (format[ps->i] == '*')
+	{
+		printf("HOLA");
+	}
 }

@@ -37,7 +37,7 @@ int	main(void)
 // FORMAT SPECIFICATIONS 
 // A conversion specification consists of optional and required fields in this form:
 // %[flags][width][.precision][size]type
-/*
+
 	ft_printf("%c\n", c);  // print a single char
 	ft_printf("%s\n", s);  // print a string of chars
 	ft_printf("%d\n", i);  // print a int base 10
@@ -68,7 +68,7 @@ int	main(void)
 	ft_printf("\n");
 	ft_printf("% 05d",i); // SPACE , PLUS, ZERO
 	ft_printf("\n");
-*/	
+	
 // PRECISION SPECIFICATION  It consists of a period (.) followed by a non-negative decimal integer that, depending on the conversion type, 
 //							specifies the number of string characters, the number of decimal places, or the number of significant digits to be output.
 		 					
