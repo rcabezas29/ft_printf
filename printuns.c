@@ -40,8 +40,6 @@ static void	ft_putprec(t_struct *ps, int arglen)
 
 	i = 0;
 	preclen = ps->precision > arglen ? ps->precision - arglen : 0;
-	if (ps->flags[0] && ps->conversion == 'o')
-		preclen--;
 	if (ps->precision)
 	{
 		while (++i <= preclen)
@@ -72,29 +70,10 @@ static void	ft_printhex(t_struct *ps, unsigned long long arg)
 		ft_putwidth(ps, 0, ft_nbrlen_base(arg, "0123456789abcdef"));
 }
 
-static void	ft_printoct(t_struct *ps, unsigned long long arg)
-{
-	if (ps->width)
-		ft_putwidth(ps, 1, ft_nbrlen_base(arg, "01234567"));
-	if (ps->precision > 0)
-		ft_putprec(ps, ft_nbrlen_base(arg, "01234567"));
-	if (ps->flags[0])
-		ft_putsharp(ps);
-	if ((arg > 0 || ps->precision > -1) && !(arg == 0 && ps->flags[0]))
-	{
-		ps->ret += ft_nbrlen_base(arg, "01234567");
-		ft_putnbr_base(arg, "01234567");
-	}
-	if (ps->flags[2])
-		ft_putwidth(ps, 0, ft_nbrlen_base(arg, "01234567"));
-}
-
 void		ft_printuns(t_struct *ps, unsigned long long arg)
 {
 	if (ps->conversion == 'x' || ps->conversion == 'X')
 		ft_printhex(ps, arg);
-	if (ps->conversion == 'o')
-		ft_printoct(ps, arg);
 	if (ps->conversion == 'u')
 	{
 		if (ps->width)

@@ -68,7 +68,7 @@ static void	ft_parsespecs(t_struct *ps, const char *format)
 			format[ps->i] == '-' || format[ps->i] == '+' ||
 			format[ps->i] == ' ' || format[ps->i] == '*')
 		ft_parseflags(ps, format);
-	if (ft_isdigit(format[ps->i]) && format[ps->i] != '0')
+	if ((ft_isdigit(format[ps->i]) && format[ps->i] != '0') || format[ps->i] == '*')
 		ft_parsewidth(ps, format);
 	if (format[ps->i] == '.')
 		ft_parseprecision(ps, format);
