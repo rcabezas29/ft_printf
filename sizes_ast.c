@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   sizes_ast.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 17:46:00 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/20 19:34:49 by rcabezas         ###   ########.fr       */
+/*   Created: 2020/01/21 08:50:21 by rcabezas          #+#    #+#             */
+/*   Updated: 2020/01/21 10:43:02 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(char c)
+#include "ft_printf.h"
+
+void    ft_precisionast(t_struct *ps, va_list ap)
 {
-	if (c > 47 && c < 58)
-		return (1);
-	return (0);
+    ps->precision = va_arg(ap, int);
+    ps->i++;
+}
+
+void    ft_widthast(t_struct *ps, va_list ap)
+{
+    ps->width = va_arg(ap, int);
+    ps->i++;
 }
