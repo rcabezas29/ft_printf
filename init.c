@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 12:43:34 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/09 12:45:45 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/21 09:21:54 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_reinit(t_struct *ps)
 	ps->dot = 0;
 	ps->modifier = '\0';
 	ps->conversion = '\0';
+	ps->ast = 0;
 	return (1);
 }
 
@@ -33,5 +34,6 @@ int	ft_init(t_struct *ps)
 	ps->conversion = '\0';
 	ps->ret = 0;
 	ps->i = 0;
+	ps->ast = 0;
 	return (1);
 }

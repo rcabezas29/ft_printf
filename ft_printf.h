@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 17:39:54 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/09 12:49:33 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/21 09:32:15 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_struct
 	size_t		width;
 	int			precision;
 	int			dot;
+	int			ast;
 	char		modifier;
 	char		conversion;
 	size_t		ret;
@@ -36,9 +37,12 @@ int				ft_reinit(t_struct *ps);
 
 void			ft_compute(t_struct *ps, va_list ap);
 
-int				ft_parse(t_struct *ps, const char *format);
+int				ft_parse(t_struct *ps, const char *format, va_list ap);
 void			ft_parsewidth(t_struct *ps, const char *format);
-void			ft_parseprecision(t_struct *ps, const char *format);
+void			ft_parseprecision(t_struct *ps, const char *format, va_list ap);
+
+void			ft_precisionast(t_struct *ps, va_list ap);
+void    		ft_widthast(t_struct *ps, va_list ap);
 
 int				ft_nbrlen(long long int n);
 void			ft_putulnbr(unsigned long long n);

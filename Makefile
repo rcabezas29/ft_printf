@@ -24,7 +24,8 @@ FILESPRINTF = ft_printf.c \
 		   printuns.c \
 		   printpercent.c \
 		   nbrutils.c \
-		   utils.c
+		   utils.c \
+		   sizes_ast.c
 
 FILESLIBFT = ft_atoi.c \
 	  ft_bzero.c \
