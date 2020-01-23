@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 09:00:52 by gde-la-t          #+#    #+#             */
-/*   Updated: 2020/01/21 10:56:43 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/23 20:02:54 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 
 int	main(void)
 {
-	
+/*
 	char			c;
 	char			s[6] = "aloha";
-	int				i;
-	unsigned int	ui;
+*/	int				i;
+	int				j;
+/*	unsigned int	ui;
 	unsigned int	hx;
 	long int		li;
 	char			*p;
@@ -32,47 +33,11 @@ int	main(void)
 	li = 21447483647;
 	p = &c;
 	hx = 0xEFu; 
-
-
-// FORMAT SPECIFICATIONS 
-// A conversion specification consists of optional and required fields in this form:
-// %[flags][width][.precision][size]type
-/*
-	ft_printf("%c\n", c);  // print a single char
-	ft_printf("%5s\n", s);  // print a string of chars
-	ft_printf("%d\n", i);  // print a int base 10
-	ft_printf("%i\n", i);  // print a int base 10
-	ft_printf("%p\n", p);  // print a pointer
-	ft_printf("%x\n", ui); // print an unsigned decimal
-	ft_printf("%ld\n",li); // print a long int
-
-	
-	
-	ft_printf("%5d\n", i);	// WIDTH OPTION 	The width specification never causes a value to be truncated. 
-	ft_printf("%3d\n", i);  	// WIDTH OPTION		or if width isn't given, all characters of the value are output, subject to the precision specification.
-	ft_printf("%07d\n",i);   // FILLING EXTRA 0
-	ft_printf("%-5d\n",i);	// LEFT JUSTIFY
-	ft_printf("%+5d\n",i);	// SIGNED +
-	ft_printf("%+5d\n",0);	// SIGNED +( O IS +)
-	ft_printf("%+-5d\n",0);	// SIGNED +( O IS +)
-	ft_printf("%+-5d\n",i); 	// VISIBLE SIGN
-	ft_printf("% -5d\n",i); 	// UNVISIBLE SIGN
-	ft_printf("% 05d\n",i); // SPACE , PLUS, ZERO
-	
-// PRECISION SPECIFICATION  It consists of a period (.) followed by a non-negative decimal integer that, depending on the conversion type, 
-//							specifies the number of string characters, the number of decimal places, or the number of significant digits to be output.
-		 					
-	ft_printf("%.2s\n", s);	// Type S -> The precision specifies the maximum number of characters to be printed. 		
-*/			
-	ft_printf("%-.*s\n", 5,"que pasa");	// Characters in excess of precision aren't printed
-	ft_printf("%-.*s\n", 10,"que pasa");
-	ft_printf("%.*s\n",0, s); 				// No characters output 
-	ft_printf("%*s\n",0, s); 				// Without period (.) ->  no truncation
- 	ft_printf("%-.*d\n", 5,3636363);		// Type D , I , X -> The precision specifies the minimum number of digits to be printed. If the number of digits in the argument is less than precision,
-	ft_printf("%-.*x\n", 5,hx);			// the output value is padded on the left with zeros. The value is not truncated when the number of digits exceeds precision. 
-	ft_printf("%-.*x\n", 2,hx);			// 0xEFU = 239 = ef
-	ft_printf("%-.*x\n", 1,hx);
-//	printf("%-.*c", 5,c);				// Type C -> The precision has no effect.		
-
+*/
+	i = ft_printf("%s", "");
+	ft_printf("%i\n", i);
+	j = printf("%s", "");
+	printf("%i\n", j);
+	printf("-------\n");
 }
 	
