@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printnegsign.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:21:13 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/10 17:21:26 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/23 20:18:24 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 		widthlen = ps->width - ps->precision;
 	else
 		widthlen = ps->width - arglen;
-	if (ps->flags[4])
+	if (ps->flags[4] == 1)
 		widthlen -= 1;
 	if (ps->precision == -1)
 		widthlen += arglen;
 	preclen = ps->precision > arglen ? ps->precision - arglen + 1 : 0;
-	if (ps->width && ((!less && ps->flags[2]) ||
-				(less && !ps->flags[2])))
+	if (ps->width && ((!less && ps->flags[2] == 1) ||
+				(less && ps->flags[2] != 1)))
 	{
 		while (++i <= widthlen - preclen)
 			ft_putchar(ps->flags[1] && !ps->flags[2] ? '0' : ' ');
@@ -74,22 +74,22 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 	arglen = ft_nbrlen(arg);
 	if (arg <= -2147483647)
 		ps->ret += 18;
-	if (ps->flags[1])
+	if (ps->flags[1] == 1)
 		ft_putchar('-');
 	if (ps->width)
 		ft_putwidth(ps, 1, arglen);
-	if (!ps->flags[1] && ps->precision > (int)arglen)
+	if (ps->flags[1] != 1 && ps->precision > (int)arglen)
 		ft_putchar('-');
 	if (ps->precision)
 		ft_putprec(ps, arglen);
-	if (!ps->flags[1] && ps->precision <= (int)arglen)
+	if (ps->flags[1] != 1 && ps->precision <= (int)arglen)
 		ft_putchar('-');
 	if (ps->precision != -1)
 	{
 		ps->ret += arglen;
 		ft_putlnbr(arg);
 	}
-	if (ps->flags[2])
+	if (ps->flags[2] == 1)
 		ft_putwidth(ps, 0, arglen);
 }
 

@@ -6,24 +6,20 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 13:14:18 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/21 09:31:57 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/23 19:35:31 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-static void	ft_parseast(t_struct *ps, va_list ap)
+static void	ft_parseast(const char *format, t_struct *ps, va_list ap)
 {
 	ps->ast++;
-	if (ps->ast == 1)
-	{
-		ft_widthast(ps, ap);
-	}
-	else if (ps->ast == 2)
-	{
-		ft_widthast(ps, ap);
+	if (format[ps->i] == '*' && format[ps->i - 1] == '.')
 		ft_precisionast(ps, ap);
-	}
+	else
+		ft_widthast(ps, ap);
 }
 
 static void	ft_parseflags(t_struct *ps, const char *format)
@@ -54,10 +50,7 @@ static void	ft_parseflags(t_struct *ps, const char *format)
 		ps->i++;
 	}
 	if (format[ps->i] == '*')
-	{
 		ps->flags[5] = 1;
-		ps->i++;
-	}
 }
 
 static void	ft_parsemodifiers(t_struct *ps, const char *format)
@@ -81,11 +74,11 @@ static void	ft_parsespecs(t_struct *ps, const char *format, va_list ap)
 			format[ps->i] == ' ' || format[ps->i] == '*')
 		ft_parseflags(ps, format);
 	if ((ft_isdigit(format[ps->i]) && format[ps->i] != '0'))
-		ft_parsewidth(ps, format);
+		ft_parsewidth(ps, format, ap);
 	if (format[ps->i] == '.')
 		ft_parseprecision(ps, format, ap);
 	if (format[ps->i] == '*')
-		ft_parseast(ps, ap);
+		ft_parseast(format ,ps, ap);
 	if (format[ps->i] == 'h' || format[ps->i] == 'l')
 		ft_parsemodifiers(ps, format);
 }

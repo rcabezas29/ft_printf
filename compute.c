@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   compute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 13:33:14 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/09 13:33:30 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/23 19:33:51 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static void	ft_castsgn(t_struct *ps, va_list ap)
 {

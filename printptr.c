@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printptr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:16:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/10 17:16:25 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/23 20:19:32 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 
 	i = 0;
 	widthlen = ps->width - arglen;
-	if (ps->width && ((!less && ps->flags[2]) ||
-				(less && !ps->flags[2])))
+	if (ps->width && ((!less && ps->flags[2] == 1) ||
+				(less && ps->flags[2] != 1)))
 	{
 		while (++i <= widthlen)
 			ft_putchar(' ');
@@ -56,7 +56,7 @@ void		ft_printptr(t_struct *ps, uintptr_t arg)
 		ps->ret += ft_nbrlen_base(arg, "0123456789abcdef");
 		ft_putnbr_base(arg, "0123456789abcdef");
 	}
-	if (ps->width && ps->flags[2])
+	if (ps->width && ps->flags[2] == 1)
 		ft_putwidth(ps, 0, ft_nbrlen_base(arg, "0123456789abcdef") + 2);
 }
 

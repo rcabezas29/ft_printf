@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printpercent.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:12:19 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/10 17:12:23 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/23 20:18:42 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	ft_putpads(t_struct *ps, int less)
 
 	i = 0;
 	widthlen = ps->width - 1;
-	if (ps->width && ((less && ps->flags[2]) ||
+	if (ps->width && ((less && ps->flags[2] == 1) ||
 				(!less && !ps->flags[2])))
 	{
 		while (++i <= widthlen)
-			ft_putchar(ps->flags[1] ? '0' : ' ');
+			ft_putchar(ps->flags[1] == 1 ? '0' : ' ');
 		ps->ret += i - 1;
 	}
 }
