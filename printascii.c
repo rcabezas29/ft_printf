@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:41:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/27 21:00:55 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:04:26 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,27 @@ static void	ft_putpads(t_struct *ps, int less, int arglen)
 	int	widthlen;
 
 	i = 0;
-	if (ps->precision != 0 && ps->precision != 0)
+	if (ps->width > 0 && ps->precision > 0)
 	{
-		widthlen = ps->precision;
+		if (ps->precision >= ps->width)
+			widthlen = ps->width - arglen;			
+		else
+		{
+			if (arglen >= ps->width)
+				widthlen = ps->width - ps->precision;
+			else if (ps->precision < arglen)
+				widthlen = ps->width - ps->precision;
+			else
+				widthlen = ps->width - arglen;
+		}
 	}
+	else if (ps->precision == 0 && ps->width != 0)
+		widthlen = ps->width - arglen;
 	else
-		widthlen = arglen;
+		widthlen = 0;
 	if (ps->precision == -1)
-		widthlen += arglen;
-	if (ps->width == 1 && ((less == 0 && ps->flags[2] == 1) ||
+		widthlen += ps->width;
+	if (ps->width != 0 && ((less == 0 && ps->flags[2] == 1) ||
 				(less != 0 && ps->flags[2] != 1)))
 	{
 		while (++i <= widthlen)
@@ -56,7 +68,7 @@ void		ft_printstr(t_struct *ps, char *arg)
 	i = 0;
 	if (!arg)
 		arg = "(null)";
-	if (ps->width != 0 || ps->precision != 0)
+	if (ps->width > 0 || ps->precision > 0)
 		ft_putpads(ps, 1, ft_strlen(arg));
 	if (ps->precision != 0 && ps->precision != -1)
 	{

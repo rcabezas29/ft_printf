@@ -6,12 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:21:13 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/23 20:18:24 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:16:50 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void	ft_putlnbr(long long int n)
 {
@@ -59,7 +58,7 @@ static void	ft_putprec(t_struct *ps, int arglen)
 
 	i = 0;
 	preclen = ps->precision > arglen ? ps->precision - arglen + 1 : 0;
-	if (ps->precision)
+	if (ps->precision > 0)
 	{
 		while (++i <= preclen)
 			ft_putchar('0');
@@ -76,11 +75,11 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 		ps->ret += 18;
 	if (ps->flags[1] == 1)
 		ft_putchar('-');
-	if (ps->width)
+	if (ps->width > 0)
 		ft_putwidth(ps, 1, arglen);
 	if (ps->flags[1] != 1 && ps->precision > (int)arglen)
 		ft_putchar('-');
-	if (ps->precision)
+	if (ps->precision > 0)
 		ft_putprec(ps, arglen);
 	if (ps->flags[1] != 1 && ps->precision <= (int)arglen)
 		ft_putchar('-');
