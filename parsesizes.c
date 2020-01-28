@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:05:33 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/23 18:31:52 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/28 11:46:16 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	ft_parseprecision(t_struct *ps, const char *format, va_list ap)
 	}
 	else
 	{
+		if (format[ps->i] == '0' && ft_isdigit(format[ps->i + 1]))
+			ps->i += 1;
 		ps->precision = ft_atoi(format + ps->i);
 		ps->i += ft_nbrlen(ps->precision);
 	}

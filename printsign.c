@@ -6,17 +6,17 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:31:33 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/23 20:21:58 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:30:02 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-static void	ft_putlnbr(long long int n)
+static void	ft_putlnbr(long long int n, t_struct *ps)
 {
 	if (n > 9)
-		ft_putlnbr(n / 10);
+		ft_putlnbr(n / 10, ps);
 	ft_putchar(n % 10 + '0');
 }
 
@@ -66,11 +66,8 @@ void		ft_printsgn(t_struct *ps, long long int arg)
 
 	arglen = ft_nbrlen(arg);
 	if (ps->flags[3] == 1 && ps->flags[1] == 1)
-	{
-		printf("X\n");
 		ft_putchar('+');
-	
-	}else if (ps->flags[4] == 1 && ps->flags[3] != 1)
+	else if (ps->flags[4] == 1 && ps->flags[3] != 1)
 	{
 		ft_putchar(' ');
 		ps->ret++;
@@ -83,8 +80,8 @@ void		ft_printsgn(t_struct *ps, long long int arg)
 		ft_putprec(ps, arglen);
 	if (!(ps->precision == -1 && arg == 0))
 	{
-		ps->ret += (arglen + ps->flags[3] == 1);
-		ft_putlnbr(arg);
+		ft_putlnbr(arg, ps);
+		ps->ret += arglen;
 	}
 	if (ps->width)
 		ft_putwidth(ps, 0, arglen);
