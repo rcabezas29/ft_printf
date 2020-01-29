@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 09:00:52 by gde-la-t          #+#    #+#             */
-/*   Updated: 2020/01/23 20:02:54 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/29 20:33:40 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	main(void)
 	p = &c;
 	hx = 0xEFu; 
 */
-	i = ft_printf("%s", "");
+	i = ft_printf("%5.p", NULL);
 	ft_printf("%i\n", i);
-	j = printf("%s", "");
+	j = printf("%5.p", NULL);
 	printf("%i\n", j);
 	printf("-------\n");
 }
