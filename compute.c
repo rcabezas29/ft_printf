@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 13:33:14 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/23 19:33:51 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/29 20:49:40 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		ft_compute(t_struct *ps, va_list ap)
 	else if (ps->conversion == 'c')
 		ft_printchar(ps, va_arg(ap, int));
 	else if (ps->conversion == 'p')
-		ft_printptr(ps, va_arg(ap, uintptr_t));
+		ft_printptr(ps, va_arg(ap, intptr_t));
 	else if (ps->conversion == '%')
 		ft_printpercent(ps);
 }

@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:31:33 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/28 14:30:02 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/29 20:28:39 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 				(less && ps->flags[2] != 1)))
 	{
 		while (++i <= widthlen - preclen)
-			ft_putchar(ps->flags[1] == 1 && ps->flags[2] != 1 && !preclen ? '0' : ' ');
+		{
+			if (ps->precision == 0)
+				ft_putchar(ps->flags[1] == 1 && ps->flags[2] != 1 ? '0' : ' ');
+			else
+				ft_putchar(' ');		}
 		ps->ret += i - 1;
 	}
 }
@@ -63,7 +67,9 @@ static void	ft_putprec(t_struct *ps, int arglen)
 void		ft_printsgn(t_struct *ps, long long int arg)
 {
 	size_t	arglen;
-
+	int i;
+	
+	i = 0;
 	arglen = ft_nbrlen(arg);
 	if (ps->flags[3] == 1 && ps->flags[1] == 1)
 		ft_putchar('+');
@@ -72,18 +78,26 @@ void		ft_printsgn(t_struct *ps, long long int arg)
 		ft_putchar(' ');
 		ps->ret++;
 	}
-	if (ps->width)
+	if (ps->width > 0)
 		ft_putwidth(ps, 1, arglen);
 	if (ps->flags[3] == 1 && ps->flags[1] != 1)
 		ft_putchar('+');
-	if (ps->precision)
+	if (ps->precision > 0)
 		ft_putprec(ps, arglen);
 	if (!(ps->precision == -1 && arg == 0))
 	{
 		ft_putlnbr(arg, ps);
 		ps->ret += arglen;
 	}
-	if (ps->width)
+	if (ps->width > 0)
 		ft_putwidth(ps, 0, arglen);
+	if (ps->width < 0)
+	{
+		while(i++ < (-1 * ps->width) - ft_nbrlen(arg))
+		{
+			ft_putchar(' ');
+			ps->ret++;
+		}
+	}
 }
 

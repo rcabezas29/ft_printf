@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:05:30 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/23 20:24:02 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/29 18:34:30 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 				(less && !ps->flags[2])))
 	{
 		while (++i <= widthlen - preclen)
-			ft_putchar(ps->flags[1] == 1 && ps->flags[2] != 1 ? '0' : ' ');
+		{
+			if (ps->precision == 0)
+				ft_putchar(ps->flags[1] == 1 && ps->flags[2] != 1 ? '0' : ' ');
+			else
+				ft_putchar(' ');
+		}
 		ps->ret += i - 1;
 	}
 }
@@ -83,7 +88,7 @@ void		ft_printuns(t_struct *ps, unsigned long long arg)
 		if (!(ps->precision == -1 && arg == 0))
 		{
 			if (arg == 4294967295 || (long long)arg < 0)
-				ps->ret += 20;
+				ps->ret += 10;
 			else
 				ps->ret += ft_nbrlen(arg);
 			ft_putulnbr(arg);

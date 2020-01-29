@@ -6,15 +6,16 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 17:39:54 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/22 19:03:29 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/29 20:50:31 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdarg.h>
-# include <stdlib.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
 # include "libft.h"
 
 typedef struct	s_struct
@@ -54,7 +55,7 @@ void			ft_printstr(t_struct *ps, char *arg);
 void			ft_printsgn_neg(t_struct *ps, long long int arg);
 void			ft_printsgn(t_struct *ps, long long int arg);
 void			ft_printpercent(t_struct *ps);
-void			ft_printptr(t_struct *ps, uintptr_t arg);
+void			ft_printptr(t_struct *ps, intptr_t arg);
 void			ft_printuns(t_struct *ps, unsigned long long arg);
 
 
