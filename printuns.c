@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:05:30 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/29 18:34:30 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/30 17:51:31 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ static void	ft_printhex(t_struct *ps, unsigned long long arg)
 		ft_putnbr_base(arg, "0123456789ABCDEF");
 	if (ps->flags[2] == 1)
 		ft_putwidth(ps, 0, ft_nbrlen_base(arg, "0123456789abcdef"));
+	if (ps->precision == -1 && ps->conversion == 'x' && arg != 0)
+	{
+		ft_putnbr_base(arg, "0123456789abcdef");
+		ps->ret += ft_nbrlen_base(arg, "0123456789abcdef");
+	}
+	if (ps->precision == -1 && ps->conversion == 'X' && arg != 0)
+	{
+		ft_putnbr_base(arg, "0123456789ABCDEF");
+		ps->ret += ft_nbrlen_base(arg, "0123456789ABCDEF");
+	}
 }
 
 void		ft_printuns(t_struct *ps, unsigned long long arg)
