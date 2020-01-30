@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:21:13 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/30 17:47:20 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/01/30 18:28:53 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 	i = 0;
 	if (ps->precision > 0 && ps->precision < arglen && ps->precision > (int)ps->width)
 		widthlen = ps->width - ps->precision;
+	else if (ps->precision == -1 && ps->width >= 0)
+		widthlen = ps->width - (2 * arglen);
 	else
 		widthlen = ps->width - arglen;
 	if (ps->flags[4] == 1)
@@ -42,8 +44,8 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 	if (ps->precision == -1)
 		widthlen += arglen;
 	preclen = ps->precision > arglen ? ps->precision - arglen + 1 : 0;
-	if (ps->width && ((!less && ps->flags[2] == 1) ||
-				(less && ps->flags[2] != 1)))
+	if (ps->width > 0 && ((less == 0 && ps->flags[2] == 1) ||
+				(less != 0 && ps->flags[2] != 1)))
 	{
 		while (++i <= widthlen - preclen)
 		{
@@ -105,7 +107,7 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 			ps->ret++;
 		}
 	}
-	if (ps->precision == -1 && ps->width == 0)
+	if (ps->precision == -1 && ps->width >= 0)
 	{
 		ps->ret += arglen;
 		ft_putlnbr(arg);
