@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:21:13 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/30 18:28:53 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 21:02:47 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 	int	preclen;
 
 	i = 0;
-	if (ps->precision > 0 && ps->precision < arglen && ps->precision > (int)ps->width)
+	if (ps->precision > 0 && ps->precision < arglen && ps->precision >
+			(int)ps->width)
 		widthlen = ps->width - ps->precision;
 	else if (ps->precision == -1 && ps->width >= 0)
 		widthlen = ps->width - (2 * arglen);
@@ -43,7 +44,7 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 		widthlen -= 1;
 	if (ps->precision == -1)
 		widthlen += arglen;
-	preclen = ps->precision > arglen ? ps->precision - arglen + 1 : 0;
+	preclen = ps->precision >= arglen ? ps->precision - arglen + 1 : 0;
 	if (ps->width > 0 && ((less == 0 && ps->flags[2] == 1) ||
 				(less != 0 && ps->flags[2] != 1)))
 	{
@@ -76,7 +77,7 @@ static void	ft_putprec(t_struct *ps, int arglen)
 void		ft_printsgn_neg(t_struct *ps, long long int arg)
 {
 	size_t	arglen;
-	int i;
+	int		i;
 
 	i = 0;
 	arglen = ft_nbrlen(arg);
@@ -84,7 +85,7 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 		ft_putchar('-');
 	if (ps->width > 0)
 		ft_putwidth(ps, 1, arglen);
-	if (ps->flags[1] == 1 && ps->precision > 0)
+	if (ps->flags[1] == 1 && (ps->precision > 0 || ps->precision == -1))
 		ft_putchar('-');
 	if (ps->flags[1] != 1 && ps->precision > (int)arglen)
 		ft_putchar('-');
@@ -97,20 +98,19 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 		ps->ret += arglen;
 		ft_putlnbr(arg);
 	}
-	if (ps->flags[2] == 1)
-		ft_putwidth(ps, 0, arglen);
-	if (ps->width < 0)
-	{
-		while(i++ < (-1 * ps->width) - ft_nbrlen(arg))
-		{
-			ft_putchar(' ');
-			ps->ret++;
-		}
-	}
 	if (ps->precision == -1 && ps->width >= 0)
 	{
 		ps->ret += arglen;
 		ft_putlnbr(arg);
 	}
+	if (ps->flags[2] == 1)
+		ft_putwidth(ps, 0, arglen);
+	if (ps->width < 0)
+	{
+		while (i++ < (-1 * ps->width) - ft_nbrlen(arg))
+		{
+			ft_putchar(' ');
+			ps->ret++;
+		}
+	}
 }
-

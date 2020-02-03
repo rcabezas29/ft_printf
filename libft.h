@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 19:00:20 by rcabezas          #+#    #+#             */
-/*   Updated: 2019/12/11 19:08:20 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 20:58:30 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
-int 			ft_isupper(int c);
+int				ft_isupper(int c);
 int				ft_toupper(int c);
 char			ft_tolower(char c);
 char			*ft_strchr(const char *str, int c);
@@ -68,7 +68,7 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
-void            ft_putchar(char c);
-int             ft_isupper(int c);
+void			ft_putchar(char c);
+int				ft_isupper(int c);
 void			ft_putstr(char *s);
 #endif

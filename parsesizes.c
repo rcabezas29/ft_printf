@@ -6,12 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:05:33 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/28 11:46:16 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 20:52:51 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	ft_parseprecision(t_struct *ps, const char *format, va_list ap)
 {
@@ -23,7 +22,7 @@ void	ft_parseprecision(t_struct *ps, const char *format, va_list ap)
 		return ;
 	}
 	else if (format[ps->i] == '*' && format[ps->i - 1] == '.')
-	{	
+	{
 		ft_precisionast(ps, ap);
 		return ;
 	}

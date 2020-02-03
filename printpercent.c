@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:12:19 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/27 20:29:20 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 20:59:47 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_putpads(t_struct *ps, int less)
 
 void		ft_printpercent(t_struct *ps)
 {
-	if (ps->width > 0|| ps->precision > 0)
+	if (ps->width > 0 || ps->precision > 0)
 		ft_putpads(ps, 0);
 	ps->ret++;
 	ft_putchar('%');

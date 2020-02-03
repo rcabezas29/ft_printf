@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:31:33 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/30 18:29:41 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 21:06:11 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,26 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 	int	preclen;
 
 	i = 0;
-	if (ps->precision > 0 && ps->precision < arglen && ps->precision > (int)ps->width)
+	if (ps->precision > 0 && ps->precision < arglen && ps->precision >
+			(int)ps->width)
 		widthlen = ps->width - ps->precision;
 	else
 		widthlen = ps->width - arglen;
 	if (ps->flags[3] == 1 || ps->flags[4] == 1)
 		widthlen -= 1;
-	if (ps->precision == -1)
+	if (ps->precision == -1 && arglen == 1)
 		widthlen += arglen;
 	preclen = ps->precision > arglen ? ps->precision - arglen : 0;
-	if (ps->width && ((!less && ps->flags[2] == 1) ||
-				(less && ps->flags[2] != 1)))
+	if (ps->width > 0 && ((less == 0 && ps->flags[2] == 1) ||
+				(less != 0 && ps->flags[2] != 1)))
 	{
 		while (++i <= widthlen - preclen)
 		{
 			if (ps->precision == 0)
 				ft_putchar(ps->flags[1] == 1 && ps->flags[2] != 1 ? '0' : ' ');
 			else
-				ft_putchar(' ');		}
+				ft_putchar(' ');
+		}
 		ps->ret += i - 1;
 	}
 }
@@ -67,7 +69,7 @@ static void	ft_putprec(t_struct *ps, int arglen)
 void		ft_printsgn(t_struct *ps, long long int arg)
 {
 	size_t	arglen;
-	int i;
+	int		i;
 	
 	i = 0;
 	arglen = ft_nbrlen(arg);
@@ -93,11 +95,21 @@ void		ft_printsgn(t_struct *ps, long long int arg)
 		ft_putwidth(ps, 0, arglen);
 	if (ps->width < 0)
 	{
-		while(i++ < (-1 * ps->width) - ft_nbrlen(arg))
+		if (ps->precision != -1)
 		{
-			ft_putchar(' ');
-			ps->ret++;
+			while (i++ < (-1 * ps->width) - ft_nbrlen(arg))
+			{
+				ft_putchar(' ');
+				ps->ret++;
+			}
+		}
+		else
+		{
+			while (i++ < -ps->width)
+			{
+				ft_putchar(' ');
+				ps->ret++;
+			}
 		}
 	}
 }
-
