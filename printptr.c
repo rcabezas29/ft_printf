@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:16:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/29 20:49:22 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 21:00:35 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 {
 	int	i;
 	int	widthlen;
-//	printf("ARGLEN: %i\n", arglen);
 
 	i = 0;
 	widthlen = ps->width - arglen;
@@ -36,7 +35,7 @@ static void	ft_putprec(t_struct *ps, int arglen)
 
 	i = 0;
 	preclen = ps->precision > arglen ? ps->precision - arglen : 0;
-	if (ps->precision)
+	if (ps->precision != 0)
 	{
 		while (++i <= preclen)
 			ft_putchar('0');
@@ -46,12 +45,9 @@ static void	ft_putprec(t_struct *ps, int arglen)
 
 void		ft_printptr(t_struct *ps, intptr_t arg)
 {
-	/*
-	printf("PTR: %lu\n", arg);
-	printf("PRECISION: %i\n", ps->precision);
-	printf("WIDTH: %i\n", ps->width);
-	*/
-	if (ps->width != 0)
+	if (ps->width != 0 && arg == 0 && ps->precision == -1)
+		ft_putwidth(ps, 1, 2);
+	else if (ps->width != 0)
 		ft_putwidth(ps, 1, ft_nbrlen_base(arg, "0123456789abcdef") + 2);
 	ft_putstr("0x");
 	ps->ret += 2;
@@ -65,4 +61,3 @@ void		ft_printptr(t_struct *ps, intptr_t arg)
 	if (ps->width != 0 && ps->flags[2] == 1)
 		ft_putwidth(ps, 0, ft_nbrlen_base(arg, "0123456789abcdef") + 2);
 }
-

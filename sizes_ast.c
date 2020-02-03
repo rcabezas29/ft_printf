@@ -6,12 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 08:50:21 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/23 18:34:39 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 21:01:28 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void    ft_precisionast(t_struct *ps, va_list ap)
 {

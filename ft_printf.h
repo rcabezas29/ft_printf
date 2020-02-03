@@ -6,16 +6,16 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 17:39:54 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/29 20:50:31 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 20:59:27 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stdio.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <stdio.h>
 # include "libft.h"
 
 typedef struct	s_struct
@@ -43,7 +43,7 @@ void			ft_parsewidth(t_struct *ps, const char *format, va_list ap);
 void			ft_parseprecision(t_struct *ps, const char *format, va_list ap);
 
 void			ft_precisionast(t_struct *ps, va_list ap);
-void    		ft_widthast(t_struct *ps, va_list ap);
+void			ft_widthast(t_struct *ps, va_list ap);
 
 int				ft_nbrlen(long long int n);
 void			ft_putulnbr(unsigned long long n);
@@ -57,7 +57,6 @@ void			ft_printsgn(t_struct *ps, long long int arg);
 void			ft_printpercent(t_struct *ps);
 void			ft_printptr(t_struct *ps, intptr_t arg);
 void			ft_printuns(t_struct *ps, unsigned long long arg);
-
 
 void			ft_putsharp(t_struct *ps);
 int				ft_charchr(const char *s, int c);

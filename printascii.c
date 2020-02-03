@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:41:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/30 17:17:01 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 21:07:48 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_putpads(t_struct *ps, int less, int arglen)
 	if (ps->width > 0 && ps->precision > 0)
 	{
 		if (ps->precision >= ps->width)
-			widthlen = ps->width - arglen;			
+			widthlen = ps->width - arglen;
 		else
 		{
 			if (arglen >= ps->width)
@@ -97,7 +97,7 @@ void		ft_printstr(t_struct *ps, char *arg)
 	}
 	if (ps->width < 0 && ps->precision < 0 && ps->width < ps->precision)
 	{
-		while (j++ < (-1*(ps->width) - (int)ft_strlen((const char *)arg)))
+		while (j++ < (-ps->width - (int)ft_strlen((const char *)arg)))
 		{
 			ft_putchar(' ');
 			ps->ret++;
@@ -107,7 +107,15 @@ void		ft_printstr(t_struct *ps, char *arg)
 		ft_putpads(ps, 0, ft_strlen(arg));
 	if (ps->width < 0 && ps->precision == 0)
 	{
-		while(j-- > ps->width + (int)ft_strlen((const char *)arg))
+		while (j-- > ps->width + (int)ft_strlen((const char *)arg))
+		{
+			ft_putchar(' ');
+			ps->ret++;
+		}
+	}
+	if (ps->width < 0 && ps->precision == -1)
+	{
+		while (--j > ps->width)
 		{
 			ft_putchar(' ');
 			ps->ret++;

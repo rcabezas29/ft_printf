@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 13:14:18 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/23 19:35:31 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 21:03:22 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	ft_parsespecs(t_struct *ps, const char *format, va_list ap)
 	if (format[ps->i] == '.')
 		ft_parseprecision(ps, format, ap);
 	if (format[ps->i] == '*')
-		ft_parseast(format ,ps, ap);
+		ft_parseast(format, ps, ap);
 	if (format[ps->i] == 'h' || format[ps->i] == 'l')
 		ft_parsemodifiers(ps, format);
 }

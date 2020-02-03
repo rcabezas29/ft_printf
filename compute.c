@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 13:33:14 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/29 20:49:40 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/03 20:49:16 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void		ft_compute(t_struct *ps, va_list ap)
 {
 	if (ps->conversion == 'd' || ps->conversion == 'i')
 		ft_castsgn(ps, ap);
-	else if (ps->conversion == 'u' || ps->conversion == 'x' || ps->conversion == 'X')
+	else if (ps->conversion == 'u' || ps->conversion == 'x' ||
+				ps->conversion == 'X')
 		ft_castuns(ps, ap);
 	else if (ps->conversion == 's')
 		ft_printstr(ps, va_arg(ap, char *));
