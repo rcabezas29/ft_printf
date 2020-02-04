@@ -42,7 +42,7 @@ CFLAGS = -Werror -Wall -Wextra
 OBJ = $(FILESPRINTF:.c=.o) $(FILESLIBFT:.c=.o)
 
 $(NAME): $(OBJ) ft_printf.h libft.h
-	@gcc $(CFLAGS) $(FILESLIBFT) $(FILESPRINTF)
+	@gcc $(CFLAGS) $(FILESLIBFT) $(FILESPRINTF) main.c
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 

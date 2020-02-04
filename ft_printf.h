@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 17:39:54 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/03 20:59:27 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/04 17:36:59 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct	s_struct
 {
-	int			flags[6];
+	int			flags[5];
 	int			width;
 	int			precision;
 	int			dot;
