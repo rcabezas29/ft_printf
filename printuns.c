@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:05:30 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/03 18:53:36 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/04 17:57:53 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,27 +59,24 @@ static void	ft_printhex(t_struct *ps, unsigned long long arg)
 		ft_putsharp(ps);
 	if (ps->width != 0)
 		ft_putwidth(ps, 1, ft_nbrlen_base(arg, "0123456789abcdef"));
-	if (ps->flags[0] == 1 && arg && ps->flags[1] != 1 && ps->precision)
+	if (ps->flags[0] == 1 && arg && ps->flags[1] != 1 && ps->precision != 0)
 		ft_putsharp(ps);
 	if (ps->precision != 0)
 		ft_putprec(ps, ft_nbrlen_base(arg, "0123456789abcdef"));
-	if (ps->flags[0] == 1 && arg && ps->flags[1] != 1 && ps->precision == 0)
-		ft_putsharp(ps);
 	if (ps->precision != -1)
 		ps->ret += ft_nbrlen_base(arg, "0123456789abcdef");
 	if (ps->conversion == 'x' && ps->precision != -1)
 		ft_putnbr_base(arg, "0123456789abcdef");
 	else if (ps->conversion == 'X' && ps->precision != -1)
 		ft_putnbr_base(arg, "0123456789ABCDEF");
-	if (ps->precision == -1 && ps->conversion == 'x' && arg != 0)
+	if (ps->precision == -1 && (ps->conversion == 'x' ||
+				ps->conversion == 'X') && arg != 0)
 	{
-		ft_putnbr_base(arg, "0123456789abcdef");
+		if (ft_isupper(ps->conversion))
+			ft_putnbr_base(arg, "0123456789ABCDEF");
+		else
+			ft_putnbr_base(arg, "0123456789abcdef");
 		ps->ret += ft_nbrlen_base(arg, "0123456789abcdef");
-	}
-	if (ps->precision == -1 && ps->conversion == 'X' && arg != 0)
-	{
-		ft_putnbr_base(arg, "0123456789ABCDEF");
-		ps->ret += ft_nbrlen_base(arg, "0123456789ABCDEF");
 	}
 	if (ps->flags[2] == 1)
 		ft_putwidth(ps, 0, ft_nbrlen_base(arg, "0123456789abcdef"));
@@ -107,4 +104,3 @@ void		ft_printuns(t_struct *ps, unsigned long long arg)
 			ft_putwidth(ps, 0, ft_nbrlen(arg));
 	}
 }
-

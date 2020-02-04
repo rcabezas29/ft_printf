@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 13:14:18 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/03 21:03:22 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/04 17:36:43 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ static void	ft_parseflags(t_struct *ps, const char *format)
 		ps->flags[4] = 1;
 		ps->i++;
 	}
-	if (format[ps->i] == '*')
-		ps->flags[5] = 1;
 }
 
 static void	ft_parsemodifiers(t_struct *ps, const char *format)

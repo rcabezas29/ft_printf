@@ -6,12 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:41:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/03 21:07:48 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/04 19:38:36 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void	ft_putpads(t_struct *ps, int less, int arglen)
 {
@@ -25,9 +24,7 @@ static void	ft_putpads(t_struct *ps, int less, int arglen)
 			widthlen = ps->width - arglen;
 		else
 		{
-			if (arglen >= ps->width)
-				widthlen = ps->width - ps->precision;
-			else if (ps->precision < arglen)
+			if (ps->precision < arglen)
 				widthlen = ps->width - ps->precision;
 			else
 				widthlen = ps->width - arglen;
@@ -74,10 +71,8 @@ void		ft_printchar(t_struct *ps, char arg)
 void		ft_printstr(t_struct *ps, char *arg)
 {
 	int	i;
-	int j;
 
 	i = 0;
-	j = 0;
 	if (!arg)
 		arg = "(null)";
 	if (ps->width > 0 || ps->precision > 0)
@@ -86,7 +81,7 @@ void		ft_printstr(t_struct *ps, char *arg)
 	{
 		while (i < ps->precision && arg[i])
 			ft_putchar(arg[i++]);
-		while (j > ps->precision && arg[i])
+		while (i > ps->precision && arg[i])
 			ft_putchar(arg[i++]);
 		ps->ret += i;
 	}
@@ -95,9 +90,10 @@ void		ft_printstr(t_struct *ps, char *arg)
 		ft_putstr(arg);
 		ps->ret += ft_strlen(arg);
 	}
+	i = 0;
 	if (ps->width < 0 && ps->precision < 0 && ps->width < ps->precision)
 	{
-		while (j++ < (-ps->width - (int)ft_strlen((const char *)arg)))
+		while (i++ < (-ps->width - (int)ft_strlen((const char *)arg)))
 		{
 			ft_putchar(' ');
 			ps->ret++;
@@ -107,7 +103,7 @@ void		ft_printstr(t_struct *ps, char *arg)
 		ft_putpads(ps, 0, ft_strlen(arg));
 	if (ps->width < 0 && ps->precision == 0)
 	{
-		while (j-- > ps->width + (int)ft_strlen((const char *)arg))
+		while (i-- > ps->width + (int)ft_strlen((const char *)arg))
 		{
 			ft_putchar(' ');
 			ps->ret++;
@@ -115,7 +111,7 @@ void		ft_printstr(t_struct *ps, char *arg)
 	}
 	if (ps->width < 0 && ps->precision == -1)
 	{
-		while (--j > ps->width)
+		while (--i > ps->width)
 		{
 			ft_putchar(' ');
 			ps->ret++;

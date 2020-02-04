@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:21:13 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/03 21:02:47 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/04 19:32:04 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 	int	preclen;
 
 	i = 0;
-	if (ps->precision > 0 && ps->precision < arglen && ps->precision >
-			(int)ps->width)
-		widthlen = ps->width - ps->precision;
-	else if (ps->precision == -1 && ps->width >= 0)
+	if (ps->precision == -1 && ps->width >= 0)
 		widthlen = ps->width - (2 * arglen);
 	else
 		widthlen = ps->width - arglen;
@@ -85,20 +82,12 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 		ft_putchar('-');
 	if (ps->width > 0)
 		ft_putwidth(ps, 1, arglen);
-	if (ps->flags[1] == 1 && (ps->precision > 0 || ps->precision == -1))
-		ft_putchar('-');
-	if (ps->flags[1] != 1 && ps->precision > (int)arglen)
-		ft_putchar('-');
-	if (ps->flags[1] != 1 && ps->precision <= (int)arglen)
+	if ((ps->flags[1] == 1 && (ps->precision > 0 || ps->precision == -1)) ||
+				ps->flags[1] != 1)
 		ft_putchar('-');
 	if (ps->precision > 0)
 		ft_putprec(ps, arglen);
-	if (ps->precision != -1)
-	{
-		ps->ret += arglen;
-		ft_putlnbr(arg);
-	}
-	if (ps->precision == -1 && ps->width >= 0)
+	if ((ps->precision == -1 && ps->width >= 0) || ps->precision != -1)
 	{
 		ps->ret += arglen;
 		ft_putlnbr(arg);
