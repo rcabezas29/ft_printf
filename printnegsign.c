@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:21:13 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/04 19:32:04 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/08 11:08:46 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 	int	preclen;
 
 	i = 0;
-	if (ps->precision == -1 && ps->width >= 0)
-		widthlen = ps->width - (2 * arglen);
-	else
-		widthlen = ps->width - arglen;
+	widthlen = ps->precision == -1 && ps->width >= 0 ?
+				ps->width - (2 * arglen) : ps->width - arglen;
 	if (ps->flags[4] == 1)
 		widthlen -= 1;
 	if (ps->precision == -1)
@@ -71,6 +69,13 @@ static void	ft_putprec(t_struct *ps, int arglen)
 	}
 }
 
+static void	negative_width(int i, t_struct *ps, long long int arg)
+{
+	while (i++ < (-1 * ps->width) - ft_nbrlen(arg))
+		ft_putchar(' ');
+	ps->ret += i - 1;
+}
+
 void		ft_printsgn_neg(t_struct *ps, long long int arg)
 {
 	size_t	arglen;
@@ -95,11 +100,5 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 	if (ps->flags[2] == 1)
 		ft_putwidth(ps, 0, arglen);
 	if (ps->width < 0)
-	{
-		while (i++ < (-1 * ps->width) - ft_nbrlen(arg))
-		{
-			ft_putchar(' ');
-			ps->ret++;
-		}
-	}
+		negative_width(i, ps, arg);
 }

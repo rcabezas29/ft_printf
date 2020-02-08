@@ -6,12 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 13:33:14 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/03 20:49:16 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/08 11:44:35 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static void	ft_castsgn(t_struct *ps, va_list ap)
 {

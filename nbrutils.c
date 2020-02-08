@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nbrutils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:12:51 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/09 16:19:48 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/08 12:18:02 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ int		ft_nbrlen(long long int n)
 
 void	ft_putulnbr(unsigned long long n)
 {
-	if (n == 0)
-	{
-		ft_putchar('0');
-		return ;
-	}
 	if (n > 9)
 		ft_putulnbr(n / 10);
 	ft_putchar(n % 10 + '0');
