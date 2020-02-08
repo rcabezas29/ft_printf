@@ -19,13 +19,14 @@ FILESPRINTF = ft_printf.c \
 		   compute.c \
 		   printsign.c \
 		   printnegsign.c \
-		   printascii.c \
+		   printstr.c \
 		   printptr.c \
 		   printuns.c \
 		   printpercent.c \
 		   nbrutils.c \
 		   utils.c \
-		   sizes_ast.c
+		   sizes_ast.c \
+		   printchar.c
 
 FILESLIBFT = ft_atoi.c \
 	  ft_bzero.c \
