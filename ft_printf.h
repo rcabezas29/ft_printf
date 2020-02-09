@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 17:39:54 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/04 17:36:59 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/09 11:26:50 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "libft.h"
+# include "libft/libft.h"
 
 typedef struct	s_struct
 {

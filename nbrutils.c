@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:12:51 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/08 12:18:02 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/08 13:37:49 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_putulnbr(unsigned long long n)
 {
 	if (n > 9)
 		ft_putulnbr(n / 10);
-	ft_putchar(n % 10 + '0');
+	ft_putchar_fd(n % 10 + '0', 1);
 }
 
 int		ft_nbrlen_base(long long int nb, char *base)
@@ -54,5 +54,5 @@ void	ft_putnbr_base(long long int nb, char *base)
 {
 	if ((size_t)nb >= ft_strlen(base))
 		ft_putnbr_base(nb / ft_strlen(base), base);
-	ft_putchar(base[nb % ft_strlen(base)]);
+	ft_putchar_fd(base[nb % ft_strlen(base)], 1);
 }
