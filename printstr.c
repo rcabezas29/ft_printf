@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:41:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/08 12:38:53 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/08 13:44:56 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_putpads(t_struct *ps, int less, int arglen)
 				(less != 0 && ps->flags[2] != 1)))
 	{
 		while (++i <= widthlen)
-			ft_putchar(' ');
+			ft_putchar_fd(' ', 1);
 		ps->ret += i - 1;
 	}
 }
@@ -47,14 +47,14 @@ static void	no_prec_but_width_and_prec0(int i, t_struct *ps, char *arg)
 	{
 		while (i-- > ps->width + (int)ft_strlen((const char *)arg))
 		{
-			ft_putchar(' ');
+			ft_putchar_fd(' ', 1);
 			ps->ret++;
 		}
 	}
 	if (ps->width < 0 && ps->precision == -1)
 	{
 		while (--i > ps->width)
-			ft_putchar(' ');
+			ft_putchar_fd(' ', 1);
 		ps->ret += i;
 	}
 }
@@ -62,13 +62,13 @@ static void	no_prec_but_width_and_prec0(int i, t_struct *ps, char *arg)
 static void	neg_prec_width(int i, t_struct *ps, char *arg)
 {
 	while (i++ < (-ps->width - (int)ft_strlen((const char *)arg)))
-		ft_putchar(' ');
+		ft_putchar_fd(' ', 1);
 	ps->ret += i - 1;
 }
 
 static void	write4noprec(char *arg, t_struct *ps)
 {
-	ft_putstr(arg);
+	ft_putstr_fd(arg, 1);
 	ps->ret += ft_strlen(arg);
 }
 
@@ -84,7 +84,7 @@ void		ft_printstr(t_struct *ps, char *arg)
 	if (ps->precision != 0 && ps->precision != -1)
 	{
 		while (i != ps->precision && arg[i])
-			ft_putchar(arg[i++]);
+			ft_putchar_fd(arg[i++], 1);
 		ps->ret += i;
 	}
 	else if (ps->precision != -1)

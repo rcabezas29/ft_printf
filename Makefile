@@ -12,6 +12,8 @@
 
 NAME = libftprintf.a
 
+LIBFT = libft
+
 FILESPRINTF = ft_printf.c \
 		   parse.c \
 		   parsesizes.c \
@@ -28,23 +30,17 @@ FILESPRINTF = ft_printf.c \
 		   sizes_ast.c \
 		   printchar.c
 
-FILESLIBFT = ft_atoi.c \
-	  ft_bzero.c \
-	  ft_isdigit.c \
-	  ft_isupper.c \
-	  ft_putchar.c \
-	  ft_putstr.c \
-	  ft_strlen.c \
-
 RM = rm -f
 
 CFLAGS = -Werror -Wall -Wextra
 
-OBJ = $(FILESPRINTF:.c=.o) $(FILESLIBFT:.c=.o)
+OBJ = $(FILESPRINTF:.c=.o)
 
-$(NAME): $(OBJ) ft_printf.h libft.h
-	@gcc $(CFLAGS) $(FILESLIBFT) $(FILESPRINTF) main.c
-	@ar rc $(NAME) $(OBJ)
+$(NAME): $(OBJ) ft_printf.h
+	@make -C $(LIBFT)
+	@cp libft/libft.a $(NAME)
+	@gcc $(CFLAGS) $(FILESPRINTF) libft/*.o main.c
+	@ar rc $(NAME) $(OBJ) libft/*.o
 	@ranlib $(NAME)
 
 all: $(NAME)
@@ -54,6 +50,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@make fclean -C $(LIBFT)
 
 re: fclean all
 

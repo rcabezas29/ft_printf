@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 17:23:28 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/03 20:52:07 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/09 11:35:19 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_read(t_struct *ps, const char *format, va_list ap)
 		}
 		else
 		{
-			ft_putchar(format[ps->i]);
+			ft_putchar_fd(format[ps->i], 1);
 			ps->i++;
 			ps->ret++;
 		}

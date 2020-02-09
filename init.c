@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 12:43:34 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/21 09:21:54 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/09 11:52:07 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_reinit(t_struct *ps)
 {
-	ft_bzero(ps->flags, 6);
+	ft_bzero(ps->flags, 5);
 	ps->width = 0;
 	ps->precision = 0;
 	ps->dot = 0;
@@ -26,7 +26,7 @@ int	ft_reinit(t_struct *ps)
 
 int	ft_init(t_struct *ps)
 {
-	ft_bzero(ps->flags, 6);
+	ft_bzero(ps->flags, 5);
 	ps->width = 0;
 	ps->precision = 0;
 	ps->dot = 0;
