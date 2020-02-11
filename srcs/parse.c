@@ -6,12 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 13:14:18 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/04 17:36:43 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/09 12:49:36 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "../includes/ft_printf.h"
 
 static void	ft_parseast(const char *format, t_struct *ps, va_list ap)
 {

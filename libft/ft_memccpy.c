@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 16:19:37 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/10 15:02:25 by rcabezas         ###   ########.fr       */
+/*   Created: 2019/11/04 18:00:59 by rcabezas          #+#    #+#             */
+/*   Updated: 2019/11/13 18:56:02 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	size_t			i;
-    char            *p;
+	char	*p;
+	char	*q;
 
-	i = 0;
-    p = (char *)s;
-	while (i < n)
+	p = (char *)dst;
+	q = (char *)src;
+	while (n--)
 	{
-		p[i] = 0;
-		i++;
+		*p = *q;
+		if (*q == (char)c)
+		{
+			dst++;
+			return (dst);
+		}
+		dst++;
+		p++;
+		q++;
 	}
-	return (s);
+	return (0);
 }

@@ -6,11 +6,13 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 17:46:00 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/01/20 19:34:49 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/10 16:16:15 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(char c)
+#include "libft.h"
+
+int		ft_isdigit(int c)
 {
 	if (c > 47 && c < 58)
 		return (1);

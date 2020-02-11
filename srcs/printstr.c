@@ -6,11 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:41:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/08 13:44:56 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/11 18:28:45 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static void	ft_putpads(t_struct *ps, int less, int arglen)
 {
@@ -36,12 +36,12 @@ static void	ft_putpads(t_struct *ps, int less, int arglen)
 				(less != 0 && ps->flags[2] != 1)))
 	{
 		while (++i <= widthlen)
-			ft_putchar_fd(' ', 1);
+			ft_putchar_fd(ps->flags[1] == 1 && less != 0 ? '0' : ' ', 1);
 		ps->ret += i - 1;
 	}
 }
 
-static void	no_prec_but_width_and_prec0(int i, t_struct *ps, char *arg)
+static void	no_prec_but_width_and_negwidthprec0(int i, t_struct *ps, char *arg)
 {
 	if (ps->width < 0 && ps->precision == 0)
 	{
@@ -53,9 +53,9 @@ static void	no_prec_but_width_and_prec0(int i, t_struct *ps, char *arg)
 	}
 	if (ps->width < 0 && ps->precision == -1)
 	{
-		while (--i > ps->width)
+		while (i++ < (-ps->width))
 			ft_putchar_fd(' ', 1);
-		ps->ret += i;
+		ps->ret += i - 1;
 	}
 }
 
@@ -94,8 +94,7 @@ void		ft_printstr(t_struct *ps, char *arg)
 		neg_prec_width(i, ps, arg);
 	if (ps->width != 0 && ps->flags[2] == 1)
 		ft_putpads(ps, 0, ft_strlen(arg));
-	if (ps->width < 0 && ps->precision == 0)
-		no_prec_but_width_and_prec0(i, ps, arg);
-	if (ps->width < 0 && ps->precision == -1)
-		no_prec_but_width_and_prec0(i, ps, arg);
+	if ((ps->width < 0 && ps->precision == 0) ||
+				(ps->width < 0 && ps->precision == -1))
+		no_prec_but_width_and_negwidthprec0(i, ps, arg);
 }

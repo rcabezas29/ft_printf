@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 16:19:37 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/10 15:02:25 by rcabezas         ###   ########.fr       */
+/*   Created: 2019/11/05 17:59:02 by rcabezas          #+#    #+#             */
+/*   Updated: 2019/11/26 18:10:59 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_bzero(void *s, size_t n)
+int		ft_isascii(int c)
 {
-	size_t			i;
-    char            *p;
-
-	i = 0;
-    p = (char *)s;
-	while (i < n)
-	{
-		p[i] = 0;
-		i++;
-	}
-	return (s);
+	if (c < 128 && c >= 0)
+		return (1);
+	else
+		return (0);
 }

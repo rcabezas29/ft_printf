@@ -6,11 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 11:39:20 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/08 13:39:33 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/09 12:49:47 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static void	ft_putpads(t_struct *ps, int less, int arglen)
 {

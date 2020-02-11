@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 16:19:37 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/10 15:02:25 by rcabezas         ###   ########.fr       */
+/*   Created: 2019/11/06 13:45:37 by rcabezas          #+#    #+#             */
+/*   Updated: 2019/11/13 19:06:52 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_bzero(void *s, size_t n)
+int		ft_toupper(int c)
 {
-	size_t			i;
-    char            *p;
-
-	i = 0;
-    p = (char *)s;
-	while (i < n)
-	{
-		p[i] = 0;
-		i++;
-	}
-	return (s);
+	if ((c > 96) && (c < 123))
+		c = c - 32;
+	return (c);
 }
