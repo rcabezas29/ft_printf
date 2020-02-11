@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   sizes_ast.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/10 18:15:58 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/08 13:46:11 by rcabezas         ###   ########.fr       */
+/*   Created: 2020/01/21 08:50:21 by rcabezas          #+#    #+#             */
+/*   Updated: 2020/02/09 12:50:19 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_putsharp(t_struct *ps)
+void	ft_precisionast(t_struct *ps, va_list ap)
 {
-	if (ps->conversion == 'x' || ps->conversion == 'X' || ps->conversion == 'p')
-	{
-		ft_putstr_fd(ps->conversion == 'X' ? "0X" : "0x", 1);
-		ps->ret += 2;
-	}
-	else if (ps->conversion == 'o')
-	{
-		ft_putchar_fd('0', 1);
-		ps->ret++;
-	}
+	ps->precision = va_arg(ap, int);
+	ps->i++;
 }
 
-int		ft_charchr(const char *s, int c)
+void	ft_widthast(t_struct *ps, va_list ap)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
+	ps->width = va_arg(ap, int);
+	ps->i++;
 }

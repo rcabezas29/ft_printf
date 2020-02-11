@@ -6,11 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 16:05:33 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/03 20:52:51 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/09 12:49:41 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_parseprecision(t_struct *ps, const char *format, va_list ap)
 {

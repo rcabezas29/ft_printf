@@ -6,11 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 18:05:30 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/08 13:45:21 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/10 18:15:52 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static void	ft_putwidth(t_struct *ps, int less, int arglen)
 {
@@ -30,7 +30,8 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 		while (++i <= widthlen - preclen)
 		{
 			if (ps->precision == 0)
-				ft_putchar_fd(ps->flags[1] == 1 && ps->flags[2] != 1 ? '0' : ' ', 1);
+				ft_putchar_fd(ps->flags[1] == 1 && ps->flags[2] != 1 ?
+							'0' : ' ', 1);
 			else
 				ft_putchar_fd(' ', 1);
 		}

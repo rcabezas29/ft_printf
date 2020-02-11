@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sizes_ast.c                                        :+:      :+:    :+:   */
+/*   aft_isprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 08:50:21 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/04 17:16:55 by rcabezas         ###   ########.fr       */
+/*   Created: 2019/11/05 18:13:13 by rcabezas          #+#    #+#             */
+/*   Updated: 2019/11/06 13:43:53 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-void	ft_precisionast(t_struct *ps, va_list ap)
+int		ft_isprint(int c)
 {
-	ps->precision = va_arg(ap, int);
-	ps->i++;
-}
-
-void	ft_widthast(t_struct *ps, va_list ap)
-{
-	ps->width = va_arg(ap, int);
-	ps->i++;
+	if ((c > 31) && (c < 127))
+		return (1);
+	else
+		return (0);
 }

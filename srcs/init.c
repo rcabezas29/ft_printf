@@ -6,11 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 12:43:34 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/09 11:52:07 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/09 12:49:18 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_reinit(t_struct *ps)
 {

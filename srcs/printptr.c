@@ -6,11 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:16:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/08 13:42:30 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/09 12:50:00 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static void	ft_putwidth(t_struct *ps, int less, int arglen)
 {

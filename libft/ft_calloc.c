@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 16:19:37 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/10 15:02:25 by rcabezas         ###   ########.fr       */
+/*   Created: 2019/11/08 20:09:10 by rcabezas          #+#    #+#             */
+/*   Updated: 2019/11/26 18:01:38 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+void	*ft_calloc(size_t nitems, size_t size)
 {
-	size_t			i;
-    char            *p;
+	char	*a;
 
-	i = 0;
-    p = (char *)s;
-	while (i < n)
-	{
-		p[i] = 0;
-		i++;
-	}
-	return (s);
+	if (nitems == 0 || size == 0)
+		nitems = size - 1;
+	if (!(a = (char *)malloc(nitems * size)))
+		return (0);
+	a = ft_bzero(a, nitems * size);
+	return (a);
 }

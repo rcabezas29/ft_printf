@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/09 11:37:57 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/09 11:39:10 by rcabezas         ###   ########.fr       */
+/*   Created: 2019/11/04 16:47:29 by rcabezas          #+#    #+#             */
+/*   Updated: 2019/11/13 18:46:35 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int main (void)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-    return (1);
+	char		*p;
+	const char	*q;
+
+	p = dst;
+	q = src;
+	if ((int)p == '\0' && (int)q == '\0')
+		return (dst);
+	else
+	{
+		while (n--)
+			*p++ = *q++;
+		return (dst);
+	}
 }

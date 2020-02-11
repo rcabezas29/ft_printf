@@ -6,11 +6,11 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 17:23:28 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/09 11:35:19 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/09 12:49:14 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static void	ft_read(t_struct *ps, const char *format, va_list ap)
 {
