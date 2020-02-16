@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:21:13 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/10 18:15:11 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/15 12:26:53 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_putlnbr(long long int n)
 {
-	if (n <= -2147483647)
+	if (n <= -2147483648)
 	{
 		ft_putstr_fd("2147483648", 1);
 		return ;
@@ -35,18 +35,16 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 	i = 0;
 	widthlen = ps->precision == -1 && ps->width >= 0 ?
 				ps->width - (2 * arglen) : ps->width - arglen;
-	if (ps->flags[4] == 1)
-		widthlen -= 1;
 	if (ps->precision == -1)
 		widthlen += arglen;
 	preclen = ps->precision >= arglen ? ps->precision - arglen + 1 : 0;
-	if (ps->width > 0 && ((less == 0 && ps->flags[2] == 1) ||
-				(less != 0 && ps->flags[2] != 1)))
+	if (ps->width > 0 && ((less == 0 && ps->flags[1] == '1') ||
+				(less != 0 && ps->flags[1] != '1')))
 	{
 		while (++i <= widthlen - preclen)
 		{
-			if (ps->precision == 0)
-				ft_putchar_fd(ps->flags[1] == 1 && ps->flags[2] == 0 ?
+			if (ps->precision == 0 || ps->precision < -1)
+				ft_putchar_fd(ps->flags[0] == '1' && ps->flags[1] == '0' ?
 							'0' : ' ', 1);
 			else
 				ft_putchar_fd(' ', 1);
@@ -84,12 +82,12 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 
 	i = 0;
 	arglen = ft_nbrlen(arg);
-	if (ps->flags[1] == 1 && ps->precision == 0)
+	if (ps->flags[0] == '1' && ps->precision == 0)
 		ft_putchar_fd('-', 1);
 	if (ps->width > 0)
 		ft_putwidth(ps, 1, arglen);
-	if ((ps->flags[1] == 1 && (ps->precision > 0 || ps->precision == -1)) ||
-				ps->flags[1] != 1)
+	if ((ps->flags[0] == '1' && (ps->precision > 0 || ps->precision == -1)) ||
+				ps->flags[0] == '0')
 		ft_putchar_fd('-', 1);
 	if (ps->precision > 0)
 		ft_putprec(ps, arglen);
@@ -98,7 +96,7 @@ void		ft_printsgn_neg(t_struct *ps, long long int arg)
 		ps->ret += arglen;
 		ft_putlnbr(arg);
 	}
-	if (ps->flags[2] == 1)
+	if (ps->flags[1] == '1')
 		ft_putwidth(ps, 0, arglen);
 	if (ps->width < 0)
 		negative_width(i, ps, arg);
