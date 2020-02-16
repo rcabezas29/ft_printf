@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 16:41:23 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/11 18:28:45 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/15 12:17:13 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static void	ft_putpads(t_struct *ps, int less, int arglen)
 		widthlen = 0;
 	if (ps->precision == -1)
 		widthlen += ps->width;
-	if (ps->width != 0 && ((less == 0 && ps->flags[2] == 1) ||
-				(less != 0 && ps->flags[2] != 1)))
+	if (ps->width != 0 && ((less == 0 && ps->flags[1] == '1') ||
+				(less != 0 && ps->flags[1] == '0')))
 	{
 		while (++i <= widthlen)
-			ft_putchar_fd(ps->flags[1] == 1 && less != 0 ? '0' : ' ', 1);
+			ft_putchar_fd(ps->flags[0] == '1' && less != 0 ? '0' : ' ', 1);
 		ps->ret += i - 1;
 	}
 }
@@ -92,7 +92,7 @@ void		ft_printstr(t_struct *ps, char *arg)
 	i = 0;
 	if (ps->width < 0 && ps->precision < 0 && ps->width < ps->precision)
 		neg_prec_width(i, ps, arg);
-	if (ps->width != 0 && ps->flags[2] == 1)
+	if (ps->width != 0 && ps->flags[1] == '1')
 		ft_putpads(ps, 0, ft_strlen(arg));
 	if ((ps->width < 0 && ps->precision == 0) ||
 				(ps->width < 0 && ps->precision == -1))

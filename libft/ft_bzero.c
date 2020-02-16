@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 16:19:37 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/10 15:02:25 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/15 12:08:32 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	*ft_bzero(void *s, size_t n)
 {
-	size_t			i;
-    char            *p;
+	size_t	i;
+	char	*p;
 
 	i = 0;
-    p = (char *)s;
+	p = (char *)s;
 	while (i < n)
 	{
-		p[i] = 0;
+		p[i] = '0';
 		i++;
 	}
 	return (s);

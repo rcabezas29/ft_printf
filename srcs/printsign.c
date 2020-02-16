@@ -6,7 +6,7 @@
 /*   By: rcabezas <rcabezas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:31:33 by rcabezas          #+#    #+#             */
-/*   Updated: 2020/02/10 18:15:35 by rcabezas         ###   ########.fr       */
+/*   Updated: 2020/02/15 12:14:36 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,16 @@ static void	ft_putwidth(t_struct *ps, int less, int arglen)
 
 	i = 0;
 	widthlen = ps->width - arglen;
-	if (ps->flags[3] == 1 || ps->flags[4] == 1)
-		widthlen -= 1;
 	if (ps->precision == -1 && arglen == 1)
 		widthlen += arglen;
 	preclen = ps->precision > arglen ? ps->precision - arglen : 0;
-	if (ps->width > 0 && ((less == 0 && ps->flags[2] == 1) ||
-				(less != 0 && ps->flags[2] != 1)))
+	if (ps->width > 0 && ((less == 0 && ps->flags[1] == '1') ||
+				(less != 0 && ps->flags[1] == '0')))
 	{
 		while (++i <= widthlen - preclen)
 		{
-			if (ps->precision == 0)
-				ft_putchar_fd(ps->flags[1] == 1 && ps->flags[2] != 1 ?
+			if (ps->precision == 0 || ps->precision < -1)
+				ft_putchar_fd(ps->flags[0] == '1' && ps->flags[1] == '0' ?
 							'0' : ' ', 1);
 			else
 				ft_putchar_fd(' ', 1);
@@ -75,12 +73,6 @@ static void	negative_width(int i, t_struct *ps, long long int arg)
 	}
 }
 
-static void	flagspace(t_struct *ps)
-{
-	ft_putchar_fd(' ', 1);
-	ps->ret++;
-}
-
 void		ft_printsgn(t_struct *ps, long long int arg)
 {
 	size_t	arglen;
@@ -88,14 +80,8 @@ void		ft_printsgn(t_struct *ps, long long int arg)
 
 	i = 0;
 	arglen = ft_nbrlen(arg);
-	if (ps->flags[3] == 1 && ps->flags[1] == 1)
-		ft_putchar_fd('+', 1);
-	else if (ps->flags[4] == 1 && ps->flags[3] != 1)
-		flagspace(ps);
 	if (ps->width > 0)
 		ft_putwidth(ps, 1, arglen);
-	if (ps->flags[3] == 1 && ps->flags[1] != 1)
-		ft_putchar_fd('+', 1);
 	if (ps->precision > 0)
 		ft_putprec(ps, arglen);
 	if (!(ps->precision == -1 && arg == 0))
